@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivasi Harian</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: pink;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        #motivation {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #4caf50;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Selamat datang di Motivasi Harian!</h1>
+    <label for="tanggal">Masukkan tanggal: </label>
+    <input type="number" id="tanggal" min="1" max="31">
+    <button onclick="tampilkanMotivasi()">Input</button>
+    <div id="motivation"></div>
+
+    <script>
+        function tampilkanMotivasi() {
+            var tanggalInput = document.getElementById("tanggal").value;
+            var motivasiDiv = document.getElementById("motivation");
+            var motivasi = getMotivasiByTanggal(tanggalInput);
+
+            motivasiDiv.innerHTML = motivasi;
+        }
+
+        function getMotivasiByTanggal(tanggal) {
+            switch (tanggal) {
+                case "1":
+                    return "Hari ini adalah awal dari perubahan!";
+                case "2":
+                    return "Keberhasilan dimulai dengan satu langkah kecil.";
+                case "3":
+                    return "Setiap hari adalah kesempatan baru untuk menjadi lebih baik.";
+                case "4":
+                    return "Keberuntungan selalu menghampiri mereka yang bekerja keras.";
+                case "5":
+                    return "Jangan menyerah, keajaiban terjadi setiap hari.";
+                case "6":
+                    return "Kesuksesan adalah hasil dari kerja keras dan ketekunan.";
+                case "7":
+                    return "Anda lebih kuat daripada yang Anda pikirkan.";
+                case "8":
+                    return "Percayalah pada diri sendiri, Anda mampu melakukan apapun.";
+                case "9":
+                    return "Beranilah bermimpi besar, karena mimpi adalah awal dari pencapaian.";
+                case "10":
+                    return "Ketika kesulitan datang, itu adalah peluang untuk tumbuh dan belajar.";
+                case "11":
+                    return "Pikirkan positif dan hal positif akan terjadi pada Anda.";
+                case "12":
+                    return "Ketekunan adalah kunci kesuksesan.";
+                case "13":
+                    return "Anda tidak bisa mengubah masa lalu, tetapi Anda dapat merancang masa depan Anda.";
+                case "14":
+                    return "Lakukan hari ini dengan penuh semangat dan tanpa penyesalan.";
+                case "15":
+                    return "Hidup adalah petualangan, nikmati setiap langkahnya.";
+                case "16":
+                    return "Hargai perjalanan, bukan hanya tujuan.";
+                case "17":
+                    return "Setiap hari adalah anugerah, hargailah moment tersebut.";
+                case "18":
+                    return "Pikirkan tentang kemajuan, bukan tentang kesulitan.";
+                case "19":
+                    return "Keberanian adalah kunci untuk membuka pintu kesuksesan.";
+                case "20":
+                    return "Bersyukurlah untuk apa yang Anda miliki, berjuang untuk apa yang Anda inginkan.";
+                case "21":
+                    return "Jadilah sumber inspirasi untuk diri sendiri dan orang lain.";
+                case "22":
+                    return "Lakukan yang terbaik, dan biarkan waktu yang menentukan hasilnya.";
+                case "23":
+                    return "Buat setiap hari menjadi hari yang berarti.";
+                case "24":
+                    return "Keberhasilan dimulai dari tekad untuk mencoba.";
+                case "25":
+                    return "Jangan biarkan kegagalan hari ini menghentikan usaha Anda besok.";
+                case "26":
+                    return "Percayalah pada proses, hasilnya akan sepadan dengan usaha Anda.";
+                case "27":
+                    return "Bersyukurlah untuk kemungkinan baru setiap pagi.";
+                case "28":
+                    return "Anda adalah pencipta takdir Anda sendiri.";
+                case "29":
+                    return "Jangan takut untuk mencoba, karena Anda tidak pernah tahu sejauh mana Anda bisa pergi.";
+                case "30":
+                    return "Ketika Anda merasa gagal, itu adalah peluang untuk memulai lagi dengan lebih bijaksana.";
+                case "31":
+                    return "Akhir bulan ini, tetapi awal dari perjalanan baru.";
+                // Tambahkan case untuk tanggal lain di sini
+                default:
+                    return "Tidak ada motivasi untuk tanggal ini.";
+            }
+        }
+    </script>
+</body>
+
+</html>
