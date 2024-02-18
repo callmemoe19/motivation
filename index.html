@@ -21,21 +21,25 @@
         }
 
         input {
+            height: 20px;
+            width: 40px;
             padding: 10px;
+            border-radius: 10px;
             font-size: 16px;
             margin-right: 10px;
             border: 1px solid #ccc;
             color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         button {
             padding: 10px;
-            font-size: 16px;
+            font-size: 14px;
             background-color: #f4acb7;
             color: #fff;
             border: none;
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -46,6 +50,23 @@
             color: #003049;
             animation: fadeIn 1s ease-in-out;
             text-align: inherit;
+        }
+
+        #loading-container {
+            display: none;
+            width: 100%;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        #loading-bar {
+            height: 100%;
+            width: 0;
+            background-color: #f4acb7;
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -61,20 +82,44 @@
 </head>
 
 <body>
-    <h1>allooww <span style="color: #ff97b7;"><acronym title="hyuuman kyuud">achaaaa!</acronym></span><br>hhe wellkamm
+    <h1>allooww <span style="color: #ff97b7;">achaaaa!</span><br>hhe welkamm
     </h1>
     <label for="tanggal">Hari ini tanggal berapaaa??<p></label>
     <input type="number" id="tanggal" min="1" max="31">
     <button style="font-family: poppins;" onclick="tampilkanMotivasi()">Input</button>
+    <div id="loading-container">
+        <div id="loading-bar"></div>
+    </div>
     <div id="motivation"></div>
 
     <script>
         function tampilkanMotivasi() {
             var tanggalInput = document.getElementById("tanggal").value;
             var motivasiDiv = document.getElementById("motivation");
-            var motivasi = getMotivasiByTanggal(tanggalInput);
+            var loadingContainer = document.getElementById("loading-container");
+            var loadingBar = document.getElementById("loading-bar");
 
-            motivasiDiv.innerHTML = motivasi;
+            // Reset loading bar width
+            loadingBar.style.width = '5%';
+
+            // Show loading container
+            loadingContainer.style.display = "block";
+
+            // Simulate delay and update loading bar width
+            var interval = setInterval(function () {
+                var currentWidth = parseInt(loadingBar.style.width) || 0;
+                if (currentWidth < 100) {
+                    loadingBar.style.width = (currentWidth + 10) + '%';
+                } else {
+                    // Hide loading container and clear interval after completion
+                    clearInterval(interval);
+                    loadingContainer.style.display = "none";
+
+                    // Retrieve and display motivation
+                    var motivasi = getMotivasiByTanggal(tanggalInput);
+                    motivasiDiv.innerHTML = motivasi;
+                }
+            }, 300); // Adjust the interval duration for smoother progress
         }
 
         function getMotivasiByTanggal(tanggal) {
@@ -82,7 +127,7 @@
                 case "1":
                     return "Hari ini adalah awal dari perubahan!";
                 case "2":
-                    return "Keberhasilan dimulai dengan satu langkah kecil.";
+                    return "Hey youu, do more of what make u happy, buat bahagiamu sendiri, bahagiamu ditanganmu sendiri, ndak usah buang pikiran dan tenaga buat orang yg ndak pernah menghargaimu.<br>semangattt";
                 case "3":
                     return "Setiap hari adalah kesempatan baru untuk menjadi lebih baik.";
                 case "4":
@@ -94,7 +139,7 @@
                 case "7":
                     return "Anda lebih kuat daripada yang Anda pikirkan.";
                 case "8":
-                    return "Dear myself,<br>Karena kamu terlalu fokus pada hasil...<br>Kamu terlalu khawatir akan masa yang belum pasti, kamu khawatir kalo kamu bakalan gagal,<br> kamu khawatir kalo apa yang kamu kerjakan sekarang, bakalan engga sesuai sama ekspektasi kamu, kamu takut kecewa, kamu takut apa yang kamu kerjain sekarang malah ujung-ujungnya bakalan sia-sia.<br>Padahal sebenernya mungkin ketakutan yang kamu rasakan sekarang, belum tentu terjadi. Makanya kamu sulit fokus dan engga konsisten sama apa yang kamu kerjakan sekarang. Kamu engga yakin sama diri kamu, kamu terlalu pesimis akan hal yang kamu kerjakan sekarang..";
+                    return "Dear achaaa,<br>Karena kamu terlalu fokus pada hasil...<br>Kamu terlalu khawatir akan masa yang belum pasti, kamu khawatir kalo kamu bakalan gagal,<br> kamu khawatir kalo apa yang kamu kerjakan sekarang, bakalan engga sesuai sama ekspektasi kamu, kamu takut kecewa, kamu takut apa yang kamu kerjain sekarang malah ujung-ujungnya bakalan sia-sia.<br>Padahal sebenernya mungkin ketakutan yang kamu rasakan sekarang, belum tentu terjadi. Makanya kamu sulit fokus dan engga konsisten sama apa yang kamu kerjakan sekarang. Kamu engga yakin sama diri kamu, kamu terlalu pesimis akan hal yang kamu kerjakan sekarang..";
                 case "9":
                     return "Beranilah bermimpi besar, karena mimpi adalah awal dari pencapaian.";
                 case "10":
@@ -108,7 +153,7 @@
                 case "14":
                     return "Lakukan hari ini dengan penuh semangat dan tanpa penyesalan.";
                 case "15":
-                    return "Hidup adalah petualangan, nikmati setiap langkahnya.";
+                    return "<p>Yeyyy udah setengah bulan aja niii, ga kerasaa yaa<br>achaa tw ndaaa, ngga semua yg dibakar api itu hangus menjadi abu lhoo, batu bata sengaja dibakar supaya lebih kokoh.<br>begitu juga dengan kehidupan, ndak semua yg menimpa kita akan menghancurkan, terkadang kita sedang diuji agar lebih kuat hhe<br> ttp semangattt achaaaa</p>";
                 case "16":
                     return "Hargai perjalanan, bukan hanya tujuan.";
                 case "17":
@@ -116,7 +161,7 @@
                 case "18":
                     return "Pikirkan tentang kemajuan, bukan tentang kesulitan.";
                 case "19":
-                    return "Keberanian adalah kunci untuk membuka pintu kesuksesan.";
+                    return "Hari ini kak moe ultah lhooo, gmw ngucapin apa tau apa gtuu?.";
                 case "20":
                     return "Bersyukurlah untuk apa yang Anda miliki, berjuang untuk apa yang Anda inginkan.";
                 case "21":
